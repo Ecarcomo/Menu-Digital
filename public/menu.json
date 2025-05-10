@@ -1,0 +1,202 @@
+{
+  "Pastas": [
+    {
+      "title": "Spaghetti Bolognese",
+      "description": "Spaghetti con salsa de carne y tomate.",
+      "price": 12.99,
+      "discountPrice": 10.99,
+      "menu-ppal": "si",
+      "image": "./assets/menu-fotos/spagetti_bolognese.png"
+    },
+    {
+      "title": "Ravioles de Ricota",
+      "description": "Rellenos de ricota y espinaca con salsa blanca.",
+      "price": 14.99,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/rav_ricota.png"
+    },
+    {
+      "title": "Ñoquis con Tuco",
+      "description": "Ñoquis caseros con salsa de tomate y albahaca.",
+      "price": 11.50,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/noquis.png"
+    },
+    {
+      "title": "Fettuccine Alfredo",
+      "description": "Pasta con crema, manteca y queso parmesano.",
+      "price": 13.50,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/fettuccine.png"
+    },
+    {
+      "title": "Lasagna Clásica",
+      "description": "Capas de pasta con carne, salsa y bechamel.",
+      "price": 15.00,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/lasagna.png"
+    }
+  ],
+  "Ensaladas": [
+    {
+      "title": "César",
+      "description": "Lechuga romana, croutons y aderezo césar.",
+      "price": 9.99,
+      "menu-ppal": "si",
+      "image": "./assets/menu-fotos/cesar.png"
+    },
+    {
+      "title": "Griega",
+      "description": "Tomate, pepino, aceitunas, queso feta y orégano.",
+      "price": 10.50,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/griega.png"
+    },
+    {
+      "title": "Caprese",
+      "description": "Mozzarella fresca, tomate y albahaca.",
+      "price": 8.99,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/caprese.png"
+    },
+    {
+      "title": "Mixta",
+      "description": "Lechuga, tomate, cebolla y zanahoria.",
+      "price": 7.50,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/mixta.png"
+    }
+  ],
+  "Carnes": [
+    {
+      "title": "Bife de Chorizo",
+      "description": "Corte de carne argentino con papas rústicas.",
+      "price": 19.99,
+      "menu-ppal": "si",
+      "image": "./assets/menu-fotos/bife_chorizo.png"
+    },
+    {
+      "title": "Pollo a la Parrilla",
+      "description": "Pechuga grillada con vegetales al vapor.",
+      "price": 15.80,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/pollo.png"
+    },
+    {
+      "title": "Costillas BBQ",
+      "description": "Costillas cocidas lentamente con salsa BBQ.",
+      "price": 18.50,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/costillas.png"
+    }
+  ],
+  "Pescados y Mariscos": [
+    {
+      "title": "Salmón Grillado",
+      "description": "Salmón rosado con puré de batatas.",
+      "price": 21.50,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/salmon.png"
+    },
+    {
+      "title": "Paella de Mariscos",
+      "description": "Arroz con camarones, calamares y mejillones.",
+      "price": 23.00,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/paella.png"
+    },
+    {
+      "title": "Cazuela de Mar",
+      "description": "Estofado con pescado, mariscos y especias.",
+      "price": 20.00,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/cazuela.png"
+    }
+  ],
+  "Postres": [
+    {
+      "title": "Tiramisú",
+      "description": "Clásico postre italiano con café y mascarpone.",
+      "price": 6.99,
+      "discountPrice": 5.50,
+      "menu-ppal": "no",
+      "image": "./assets/menu-fotos/tiramisu.png"
+    },
+    {
+      "title": "Flan Casero",
+      "description": "Flan de huevo con caramelo y crema.",
+      "price": 5.00,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/flan.png"
+    },
+    {
+      "title": "Cheesecake",
+      "description": "Tarta de queso con coulis de frutos rojos.",
+      "price": 6.50,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/cheesecake.png"
+    }
+  ],
+  "Pizzas": [
+    {
+      "title": "Muzzarella",
+      "description": "Salsa de tomate, muzzarella y orégano.",
+      "price": 10.00,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/muzza.png"
+    },
+    {
+      "title": "Napolitana",
+      "description": "Con tomate en rodajas, ajo y albahaca.",
+      "price": 11.50,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/napolitana.png"
+    },
+    {
+      "title": "Fugazzeta",
+      "description": "Pizza rellena de queso con cebolla.",
+      "price": 12.00,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/fugazzeta.png"
+    }
+  ],
+  "Bebidas": [
+    {
+      "title": "Agua Mineral",
+      "description": "Con o sin gas, botella de 500ml.",
+      "price": 2.50,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/agua.png"
+    },
+    {
+      "title": "Gaseosa",
+      "description": "Botella de 600ml (varios sabores).",
+      "price": 3.00,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/gaseosa.png"
+    },
+    {
+      "title": "Jugo Natural",
+      "description": "Exprimido de naranja, 300ml.",
+      "price": 4.00,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/jugo.png"
+    }
+  ],
+  "Sopas": [
+    {
+      "title": "Sopa de Calabaza",
+      "description": "Crema de calabaza con un toque de jengibre.",
+      "price": 5.90,
+      "menu-ppal": "",
+      "image": "./assets/menu-fotos/sopa_calabaza.png"
+    },
+    {
+      "title": "Sopa de Cebolla",
+      "description": "Clásica francesa, gratinada con queso.",
+      "price": 6.50,
+      "menu-ppal": "si",
+      "image": "./assets/menu-fotos/sopa_cebolla.png"
+    }
+  ]
+}

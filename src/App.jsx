@@ -38,16 +38,16 @@ function App() {
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center"
-      style={{ backgroundImage: `url(${bgImage})` ,backgroundRepeat: "no-repeat" ,backgroundSize: "cover"}}
-    >
+      className="min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
+      style={{ backgroundImage: `url(${bgImage})`}}
+  >
       <header className='bg-black text-white'>
-        <div className='flex flex-row flex-column my-auto p-5 text-2xl'>
+        <div className='flex flex-row my-auto p-5 text-2xl'>
           <img src={logoImage} className="place-self-center h-20 object-cover rounded-md"/>
           <div className='flex text-right flex-row w-full my-auto justify-end'>
-              <a className='mx-4 text-lg mb-2 sm:mb-0' href="#"><img src={'./assets/social/fb.png'} className='w-8 h-8'/></a>
-              <a className='mx-4 text-lg mb-2 sm:mb-0' href="#"><img src={'./assets/social/ins.png'} className='w-8 h-8'/></a>
-              <a className='mx-4 text-lg' href="#"><img src={'./assets/social/x.png'} className='w-8 h-8'/></a>
+              <a className='w-[30px] mx-4 text-lg mb-2 sm:mb-0' href="#"><img src={'./assets/social/fb.png'} className='w-8 h-8'/></a>
+              <a className='w-[30px] mx-4 text-lg mb-2 sm:mb-0' href="#"><img src={'./assets/social/ins.png'} className='w-8 h-8'/></a>
+              <a className='w-[30px] mx-4 text-lg' href="#"><img src={'./assets/social/x.png'} className='w-8 h-8'/></a>
           </div>
         </div>
       </header>
@@ -57,8 +57,8 @@ function App() {
           {  Object.entries(menuGS).map(([category, items]) => 
           items.map((item, index) => (
             (item['menu-ppal'] === "si" && item['available']== "si" &&
-            <li key={index} className="flex items-start justify-between gap-4 px-10 w-full h-full bg-white py-5 rounded-md place-self-center">
-              <img src={item.image} alt={item.title} className="w-20 h-20 object-cover rounded-md" />
+            <li key={index} className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 px-10 w-full h-full bg-white py-5 rounded-md place-self-center">
+              <img src={item.image} alt={item.title} className="w-full sm:w-20 sm:h-20 object-cover rounded-md" />
               <div className="flex-1">
                 <span className="bg-white p-1 rounded-md float-right font-bold text-xs uppercase">{category}</span>
                 <div className="font-bold italic text-lg">{item.title}</div>

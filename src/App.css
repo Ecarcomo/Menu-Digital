@@ -1,0 +1,11 @@
+/*CSS de la APP*/
+.featuredText {
+font-size: 1.5rem;
+font-family: 'Impact', 'Arial Black', sans-serif;
+font-weight: bold;
+-webkit-text-stroke: 1px #000;
+transform: rotate(-15deg) translateY(-60%) translateX(-5%);
+text-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+position: absolute;
+z-index: 2;
+}

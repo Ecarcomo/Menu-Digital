@@ -48,10 +48,10 @@ export async function obtenerDatosDeHoja(urlPublicaCSV) {
 
 function tsvToJson(tsv) {
   const lineas = tsv.trim().split('\n');
-  const encabezados = lineas[0].split('\t');
+  const encabezados = lineas[1].split('\t');
   const resultado = {};
 
-  for (let i = 1; i < lineas.length; i++) {
+  for (let i = 2; i < lineas.length; i++) {
     const valores = lineas[i].split('\t');
     const item = {};
     let categoria = "";
@@ -85,8 +85,10 @@ function  translateToEspecificKey(text) {
     "Precio": "price",
     "PrecioDescuento": "discountPrice",
     "MenuPrincipal": "menu-ppal",
-    "RutaImagen": "image",
-    "Disponible": "available"
+    "Disponible": "available",
+    "Imagen": "image",
+    "TextoDestacado": "featuredText",
+    "ColorTextoDestacado": "featuredTextColor",
   };
 
   return translations[text] || text;

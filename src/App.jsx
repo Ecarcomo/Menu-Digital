@@ -58,7 +58,10 @@ function App() {
           items.map((item, index) => (
             (item['menu-ppal'] === "si" && item['available']== "si" &&
             <li key={index} className="flex flex-row items-start justify-between gap-4 px-3 w-full h-full bg-white py-5 rounded-md place-self-center">
-              <img src={item.image} alt={item.title} className="w-20 h-20 object-cover rounded-md place-self-center" />
+              {(item['featuredText'] && 
+                <div className='featuredText' style={{color:item['featuredTextColor']||'#0f0'}}>{item['featuredText']}</div>
+              )}
+              <img src={"./assets/menu-fotos/"+item.image} alt={item.title} className="w-20 h-20 object-cover rounded-md place-self-center" />
               <div className="flex-1">
                 <span className="bg-white p-1 rounded-md float-right font-bold text-xs uppercase">{category}</span>
                 <div className="font-bold italic text-lg">{item.title}</div>
@@ -99,9 +102,12 @@ function App() {
                         key={index}
                         className="flex items-start justify-between gap-4 border-b last:border-b-0 pb-2"
                       >
+                        {(item['featuredText'] && 
+                          <div className='featuredText' style={{color:item['featuredTextColor']||'#0f0'}}>{item['featuredText']}</div>
+                        )}
                         {item.image && (
                           <img
-                            src={item.image}
+                            src={"./assets/menu-fotos/"+item.image}
                             alt={item.title}
                             className="w-20 h-20 object-cover rounded-md"
                           />

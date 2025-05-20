@@ -1,18 +1,21 @@
 import { useEffect,useState } from 'react'
 import './App.css'
 import {obtenerDatosDeHoja} from './functions/functions.js'
+import {srcImgBackground,srcImgLogo,urlGS} from './data/dataConfig.js';
+
 
 function App() {
   const [menu, setMenu] = useState({});
   const [menuGS, setMenuGS] = useState({});
   const [bgImage, setBgImage] = useState("");
   const [logoImage, setLogoImage] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
 
     // Imagen de fondo personalizable (ejemplo fijo, puedes adaptarlo a un input)
-    setBgImage("./assets/background.png");
-    setLogoImage("./assets/logo.png");
+    setBgImage(srcImgBackground);
+    setLogoImage(srcImgLogo);
 
 
     /*fetch("./menu.json") // El archivo JSON debe estar en public/
@@ -29,13 +32,22 @@ function App() {
   }, []);
 
   const obtenerinfo = async () => {
-    obtenerDatosDeHoja('https://docs.google.com/spreadsheets/d/e/2PACX-1vRz9tuezMxV4YtWxMi8oEg2N2sTuH8fK9mhpNaWsTK_51zQdKPSuRDITWLeQYr3Mi36AzGJ9Kl4RLZL/pub?gid=0&single=true&output=tsv')
+    obtenerDatosDeHoja(urlGS)
     .then((data) => {
       setMenuGS(data);
       console.log('menuGS:',data);
+      setLoading(false);
     });
   }
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-500">
+        <span class="loader"></span>
+      </div>
+    );
+  }
+  
   return (
     <div
       className="min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"

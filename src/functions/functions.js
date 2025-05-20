@@ -1,13 +1,17 @@
-export async function obtenerDatosDeHoja(urlPublicaCSV) {
+import {fieldMapping,nLineEncab} from '../data/dataConfig.js';
+
+
+export async function obtenerDatosDeHoja(urlPublicaTSV) {
 // urlPublicaCSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ4x5g7k3z6Z8J9l0G1q5
   //Asegurate de que la URL sea pública y accesible
   try {
-    const respuesta = await fetch(urlPublicaCSV);
+    const respuesta = await fetch(urlPublicaTSV);
     if (!respuesta.ok) {
       throw new Error(`Error al obtener los datos: ${respuesta.status}`);
     }
-    const textoCSV = await respuesta.text();
-    const jsonData = tsvToJson(textoCSV);
+    const textoTSV = await respuesta.text();
+    console.log(textoTSV);
+    const jsonData = tsvToJson(textoTSV);
 
     let jsonDataTranslated ={}
     for (const [category, value] of Object.entries(jsonData)) {
@@ -19,7 +23,7 @@ export async function obtenerDatosDeHoja(urlPublicaCSV) {
                                             return newItem;
                                 });
     }
-
+    /*transformo cadenas que son numeros a valores tipo flotantes*/
     let jsonDataFinal = {};
     for (const [category, value] of Object.entries(jsonDataTranslated)) {
       jsonDataFinal[category] = value.map(item => {
@@ -47,11 +51,14 @@ export async function obtenerDatosDeHoja(urlPublicaCSV) {
 }
 
 function tsvToJson(tsv) {
+
+  const nEncab = nLineEncab;
+  const nInfo = nLineEncab+1;
   const lineas = tsv.trim().split('\n');
-  const encabezados = lineas[1].split('\t');
+  const encabezados = lineas[nEncab].split('\t');
   const resultado = {};
 
-  for (let i = 2; i < lineas.length; i++) {
+  for (let i = nInfo; i < lineas.length; i++) {
     const valores = lineas[i].split('\t');
     const item = {};
     let categoria = "";
@@ -59,7 +66,7 @@ function tsvToJson(tsv) {
     for (let j = 0; j < encabezados.length; j++) {
       const clave = encabezados[j].trim();
       const valor = valores[j]?.trim() || "";
-      if (clave === "Categoría") {
+      if (translateToEspecificKey(clave) === "category") {
         categoria = valor;
       } else {
         item[clave] = valor;
@@ -78,18 +85,5 @@ function tsvToJson(tsv) {
 }
 
 function  translateToEspecificKey(text) {
-  const translations = {
-    "Categoría": "category",
-    "Título": "title",
-    "Descripción": "description",
-    "Precio": "price",
-    "PrecioDescuento": "discountPrice",
-    "MenuPrincipal": "menu-ppal",
-    "Disponible": "available",
-    "Imagen": "image",
-    "TextoDestacado": "featuredText",
-    "ColorTextoDestacado": "featuredTextColor",
-  };
-
-  return translations[text] || text;
+  return fieldMapping[text] || text;
 }

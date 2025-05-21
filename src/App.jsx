@@ -26,13 +26,20 @@ function App() {
       });*/
 
     
-    
-    obtenerinfo();
- 
+    obtenerinfo(); // Llamada inicial
+
+    /*
+      const intervalId = setInterval(() => {
+        obtenerinfo();
+      }, 10000); // 10 segundos
+
+      return () => clearInterval(intervalId); // Limpia el intervalo al desmontar
+    */
   }, []);
 
   const obtenerinfo = async () => {
-    obtenerDatosDeHoja(urlGS)
+    const urlSinCache = `${urlGS}${urlGS.includes('?') ? '&' : '?'}_=${Date.now()}`;
+    obtenerDatosDeHoja(urlSinCache)
     .then((data) => {
       setMenuGS(data);
       console.log('menuGS:',data);
@@ -43,7 +50,7 @@ function App() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-500">
-        <span class="loader"></span>
+        <span className="loader"></span>
       </div>
     );
   }
@@ -73,7 +80,9 @@ function App() {
               {(item['featuredText'] && 
                 <div className='featuredText' style={{color:item['featuredTextColor']||'#0f0'}}>{item['featuredText']}</div>
               )}
+              {item.image && (
               <img src={"./assets/menu-fotos/"+item.image} alt={item.title} className="w-20 h-20 object-cover rounded-md place-self-center" />
+              )}
               <div className="flex-1">
                 <span className="bg-white p-1 rounded-md float-right font-bold text-xs uppercase">{category}</span>
                 <div className="font-bold italic text-lg">{item.title}</div>
@@ -101,55 +110,56 @@ function App() {
           </ul>
         </section>
       <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-6 p-4 ">
-      {Object.entries(menuGS).map(([category, items]) => (
+      {Object.entries(menuGS).map(([category, items]) => {
         
-       
-       <section key={category} className="bg-white/80 p-4 rounded-2xl shadow-md">
-            <h2 className="text-2xl font-bold mb-4 text-center">{category}</h2>
-            <ul className="space-y-4">
-              {
-                items.map((item, index) => (
-                  ( item['available']== "si" && 
-                    (<li
-                        key={index}
-                        className="flex items-start justify-between gap-4 border-b last:border-b-0 pb-2"
-                      >
-                        {(item['featuredText'] && 
-                          <div className='featuredText' style={{color:item['featuredTextColor']||'#0f0'}}>{item['featuredText']}</div>
-                        )}
-                        {item.image && (
-                          <img
-                            src={"./assets/menu-fotos/"+item.image}
-                            alt={item.title}
-                            className="w-20 h-20 object-cover rounded-md"
-                          />
-                        )}
-                        <div className="flex-1">
-                          <div className="font-bold italic text-lg">{item.title}</div>
-                          <div className="text-sm text-gray-500">{item.description}</div>
-                          <div className="flex flex-row ">
-                            {item.discountPrice ? (
-                              <>
-                                <div className="ml-auto line-through text-gray-500 mr-2">
-                                  ${item.price.toFixed(2)}
+       if(category !== '') 
+        return( <section key={category} className="bg-white/80 p-4 rounded-2xl shadow-md">
+                  <h2 className="text-2xl font-bold mb-4 text-center">{category}</h2>
+                  <ul className="space-y-4">
+                    {
+                      items.map((item, index) => (
+                        ( item['available']== "si" && 
+                          (<li
+                              key={index}
+                              className="flex items-start justify-between gap-4 border-b last:border-b-0 pb-2"
+                            >
+                              {(item['featuredText'] && 
+                                <div className='featuredText' style={{color:item['featuredTextColor']||'#0f0'}}>{item['featuredText']}</div>
+                              )}
+                              {item.image && (
+                                <img
+                                  src={"./assets/menu-fotos/"+item.image}
+                                  alt={item.title}
+                                  className="w-20 h-20 object-cover rounded-md"
+                                />
+                              )}
+                              <div className="flex-1">
+                                <div className="font-bold italic text-lg">{item.title}</div>
+                                <div className="text-sm text-gray-500">{item.description}</div>
+                                <div className="flex flex-row ">
+                                  {item.discountPrice ? (
+                                    <>
+                                      <div className="ml-auto line-through text-gray-500 mr-2">
+                                        ${item.price.toFixed(2)}
+                                      </div>
+                                      <div className="text-green-600 font-semibold">
+                                        ${item.discountPrice.toFixed(2)}
+                                      </div>
+                                    </>
+                                  ) : (
+                                    <div className="ml-auto font-semibold">${item.price.toFixed(2)}</div>
+                                  )}
                                 </div>
-                                <div className="text-green-600 font-semibold">
-                                  ${item.discountPrice.toFixed(2)}
-                                </div>
-                              </>
-                            ) : (
-                              <div className="ml-auto font-semibold">${item.price.toFixed(2)}</div>
-                            )}
-                          </div>
-                        </div>
-                      </li>
-                    )
-                  )
-                ))
-              }
-            </ul>
-          </section>
-        ))}
+                              </div>
+                            </li>
+                          )
+                        )
+                      ))
+                    }
+                  </ul>
+                </section>)
+          return null;
+        })}
       </div>
     </div>
   );

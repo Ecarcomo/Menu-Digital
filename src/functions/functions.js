@@ -5,7 +5,15 @@ export async function obtenerDatosDeHoja(urlPublicaTSV) {
 // urlPublicaCSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ4x5g7k3z6Z8J9l0G1q5
   //Asegurate de que la URL sea pública y accesible
   try {
-    const respuesta = await fetch(urlPublicaTSV);
+    // request a la hoja de google con headers para evitar cache
+    const respuesta = await fetch(urlPublicaTSV, {
+      cache: "no-store",
+      headers: {
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache"
+      }
+    });
+
     if (!respuesta.ok) {
       throw new Error(`Error al obtener los datos: ${respuesta.status}`);
     }
@@ -32,7 +40,7 @@ export async function obtenerDatosDeHoja(urlPublicaTSV) {
           if (v === undefined || v === null || v === "") {
             newItem[k] = null;
           }
-          else if (!isNaN(v)) { 
+          else if (!isNaN(v.replace(',', '.'))) { 
             newItem[k] = parseFloat(v);
           }
           else{

@@ -10,6 +10,7 @@ position: absolute;
 z-index: 2;
 }
 
+
 /* Loader CSS https://cssloaders.github.io/*/
 .loader {
     position: relative;
@@ -21,7 +22,7 @@ z-index: 2;
     animation: panex 0.5s linear alternate infinite;
     animation-play-state: running;
     transform-origin: 170px 0;
-    z-index: 10;
+    z-index: 100;
     perspective: 300px;
 
 }
